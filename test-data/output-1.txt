@@ -1,0 +1,6 @@
+# Expected output for input-1.txt
+SUCCESS
+SUCCESS
+SUCCESS
+SUCCESS
+
