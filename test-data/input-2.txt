@@ -1,0 +1,3 @@
+# Initializing GT4500 with 10 torpedoes each and no failure
+GT4500,10,0,10,0
+TORPEDO,UNKNOWN  # should return an error message for the unknown firing mode

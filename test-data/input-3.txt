@@ -1,0 +1,3 @@
+# Test the HELP command to list available commands and instructions
+Gt4500,-,-,-,-
+TORPEDO, single

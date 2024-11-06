@@ -1,0 +1,5 @@
+# Initializing GT4500 with 10 torpedoes each and no failure
+GT4500,10,0,10,0
+TORPEDO,SINGLE  # should fire from primary
+TORPEDO,SINGLE  # should alternate to secondary
+TORPEDO,ALL     # should attempt to fire from both
