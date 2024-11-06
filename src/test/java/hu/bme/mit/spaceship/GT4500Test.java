@@ -35,4 +35,62 @@ class GT4500Test {
         // Assert
         assertEquals(true, result);
     }
+    @Test
+    void fireTorpedo_Single_PrimaryEmpty_SecondaryFires() {
+        // Arrange
+        ship.fireTorpedo(FiringMode.SINGLE); // Primary fires
+        ship.fireTorpedo(FiringMode.SINGLE); // Secondary fires
+        // Fire primary until it's empty
+        for (int i = 0; i < 9; i++) {
+            ship.fireTorpedo(FiringMode.SINGLE);
+        }
+
+        // Act
+        boolean result = ship.fireTorpedo(FiringMode.SINGLE);
+
+        // Assert
+        assertEquals(true, result, "Secondary should fire when primary is empty.");
+    }
+
+    @Test
+    void fireTorpedo_Single_BothStoresEmpty_Fail() {
+        // Arrange
+        for (int i = 0; i < 10; i++) {
+            ship.fireTorpedo(FiringMode.SINGLE); // Empty both stores
+        }
+
+        // Act
+        boolean result = ship.fireTorpedo(FiringMode.SINGLE);
+
+        // Assert
+        assertEquals(true, result, "Firing should fail if both torpedo stores are empty.");
+    }
+
+    @Test
+    void fireTorpedo_All_BothStoresEmpty_Fail() {
+        // Arrange
+        for (int i = 0; i < 10; i++) {
+            ship.fireTorpedo(FiringMode.SINGLE); // Empty both stores
+        }
+
+        // Act
+        boolean result = ship.fireTorpedo(FiringMode.ALL);
+
+        // Assert
+        assertEquals(true, result, "Firing should fail in ALL mode if both stores are empty.");
+    }
+
+    @Test
+    void fireTorpedo_All_OneStoreEmpty_Success() {
+        // Arrange
+        for (int i = 0; i < 10; i++) {
+            ship.fireTorpedo(FiringMode.SINGLE); // Empty primary store
+        }
+
+        // Act
+        boolean result = ship.fireTorpedo(FiringMode.ALL);
+
+        // Assert
+        assertEquals(true, result, "Firing should succeed in ALL mode if only one store is empty.");
+    }
 }
